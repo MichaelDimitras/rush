@@ -69,11 +69,11 @@ const createClient = (data = []) => {
         }
 
         for (let i = 0; i < d.length; i++) {            
+            const con = new converter(d);
             if(d[i][2] === url) {
                 //update and save the file                
                 d[i][0] = price;
 
-                const con = new converter(d);
                 con.saveFile('shot.csv', () => console.log(`File saved successfully`));
                 return `Listing updated successfully`;
             } else {
