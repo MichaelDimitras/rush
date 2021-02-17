@@ -1,6 +1,10 @@
 const fetch = require('node-fetch');
 
-const webHookUrl = 'https://discord.com/api/webhooks/811646590146183208/Alicywya4PXSm51AmeJxDwJu2jmGhpG7LmPFgA2QBbqrqg6L8levqkl035oqGiPkDUE8';
+const webHookUrl = process.env.webhookurl;
+
+if (!webHookUrl) {
+    throw `ERROR getting webhok url ${webHookUrl}`;
+}
 
 const sendMessage = (message) => {
     if(!typeof message === 'string') {
