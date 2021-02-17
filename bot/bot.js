@@ -68,17 +68,17 @@ const createClient = (data = []) => {
             return `ERROR: not a Top Shot listing url. It should start with 'https://www.nbatopshot.com/listings/p2p/'`;
         }
 
-        for (let i = 0; i < d.length; i++) {
+        for (let i = 0; i < d.length; i++) {            
             if(d[i][2] === url) {
                 //update and save the file                
                 d[i][0] = price;
 
                 const con = new converter(d);
                 con.saveFile('shot.csv', () => console.log(`File saved successfully`));
-
                 return `Listing updated successfully`;
             } else {
                 d.push([price, descrption, url]);
+                con.saveFile('shot.csv', () => console.log(`File saved successfully`));
                 return `New top shot added`;
             }
         }
