@@ -7,6 +7,7 @@ const prefix = '!';
 const addCommand = 'add';
 const checkCommand = 'check';
 const listCommand = 'list';
+const helpCommand = 'help';
 
 const urlRegex = /(https?:\/\/)?[\w\-~]+(\.[\w\-~]+)+(\/[\w\-~]*)*(#[\w\-]*)?(\?.*)?/
 const topShotUrlRegex = /(https:\/\/www.nbatopshot.com\/listings\/p2p\/)/;
@@ -26,7 +27,7 @@ class Bot {
 }
 
 const findUrlInData = (data, url) => {
-    return data.find((item) => item[1] === url);
+    return data.find((item) => item[2] === url);
 };
 
 const createClient = (data = []) => {
@@ -68,7 +69,7 @@ const createClient = (data = []) => {
         }
 
         for (let i = 0; i < d.length; i++) {
-            if(d[i][1] === url) {
+            if(d[i][2] === url) {
                 //update and save the file                
                 d[i][0] = price;
 
@@ -128,6 +129,8 @@ const createClient = (data = []) => {
             case listCommand:
                 message.reply(listHandler(args, data));
                 break;
+            case helpCommand:
+                message.reply('')
             default:
                 message.reply(`${prefix} should immediately be followed by one of "${addCommand}", "${listCommand}", "${checkCommand}"`);
         }

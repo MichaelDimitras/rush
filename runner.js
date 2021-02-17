@@ -22,7 +22,7 @@ const runner = (data) => {
                 console.error(`Missing data for row ${i} of file`);
             } else {
                 const targetPrice = data[i][0];
-                const url = data[i][1];    
+                const url = data[i][2];    
                 if (urlLog.hasItem(url)) {
                     console.log(`Message already sent for ${url}`);
                 } else {
