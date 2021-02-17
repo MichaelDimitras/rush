@@ -3,6 +3,8 @@ const priceChecker = require('./priceChecker');
 const sendMessage = require('./messenger');
 const UrlLog = require('./urlLog');
 
+const Bot = require('./bot/bot');
+
 const urlLog = new UrlLog();
 
 const runner = (data) => {
@@ -19,14 +21,12 @@ const runner = (data) => {
             } else if (data.length < 2) {
                 console.error(`Missing data for row ${i} of file`);
             } else {
-                //cb is message function
                 const targetPrice = data[i][0];
-                const url = data[i][1];
-    
+                const url = data[i][1];    
                 if (urlLog.hasItem(url)) {
                     console.log(`Message already sent for ${url}`);
                 } else {
-                    priceChecker(data[i][1], data[i][0], sendMessage);
+                    priceChecker(url, targetPrice, sendMessage);
                     urlLog.addItem(url);
                 }
     
@@ -38,7 +38,14 @@ const runner = (data) => {
 }
 
 const timer = (data) => {
+    // Make the bot once the file is parsed
+    const bot = new Bot(data);
+
     setInterval(runner, 5000, data);
 }
 
-parser('shot.csv', timer);
+const execute = () => {
+    parser('shot.csv', timer);
+}
+
+module.exports = execute;
