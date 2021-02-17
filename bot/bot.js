@@ -78,7 +78,7 @@ const createClient = (data = []) => {
 
                 return `Listing updated successfully`;
             } else {
-                d.push([price, url, descrption]);
+                d.push([price, descrption, url]);
                 return `New top shot added`;
             }
         }
