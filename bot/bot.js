@@ -34,8 +34,8 @@ const createClient = (data = []) => {
     const client = new Discord.Client();
 
     const addHandler = (args, d) => {
-        if (args.length !== 4) {
-            return `ERROR: The check command should look like '!add [price] [description] [url]'`;
+        if (args.length !== 3) {
+            return `ERROR: The check command should look like '!add [price] [url]'`;
         } 
 
         const price = args[1];
