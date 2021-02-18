@@ -1,3 +1,7 @@
+/*
+* Data model for items scraped from the listing page
+*/
+
 class MomentData {
     constructor(url, playerName, setName, seriesName, minPrice, circulationCount) {
         this.url = url;

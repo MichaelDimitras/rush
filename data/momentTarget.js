@@ -1,3 +1,7 @@
+/*
+* Data model for the items stored in our db
+*/
+
 const RegexHelper = require('../util/regexHelper');
 
 class MomentTarget {

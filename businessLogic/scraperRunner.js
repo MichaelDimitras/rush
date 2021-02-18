@@ -1,6 +1,9 @@
+/*
+* Given a collection of urls and price pairs, run the scraper for each one
+* with a messaging callback that runs when a low price is found
+*/
 const Messenger = require('./messenger');
 const PriceChecker = require('./priceChecker');
-const MonentTarget = require('../data/momentTarget')
 
 class ScraperRunner{
     constructor(session, data) {

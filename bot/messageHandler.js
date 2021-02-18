@@ -1,3 +1,7 @@
+/*
+* Parse input to our Discord bot 
+* and call the appropriate handler function
+*/
 const addHandler = require('./inputHandlers/addHandler');
 const checkHandler = require('./inputHandlers/checkHandler');
 

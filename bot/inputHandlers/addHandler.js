@@ -1,3 +1,7 @@
+/*
+* Handle input for our 'add' command
+* Given a price and url, save that to the db
+*/
 const RegexHelper = require('../../util/regexHelper');
 
 const addHandler = (args, db) => {

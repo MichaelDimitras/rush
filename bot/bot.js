@@ -1,3 +1,6 @@
+/*
+* A Discord bot.  Connects on instantiation
+*/
 const Discord = require("discord.js");
 const MessageHandler = require('./messageHandler');
 

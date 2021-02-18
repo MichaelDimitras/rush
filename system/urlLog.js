@@ -1,3 +1,6 @@
+/*
+* Cache used to avoid double sending
+*/
 class UrlLog {
     constructor() {
         this.index = new Set();

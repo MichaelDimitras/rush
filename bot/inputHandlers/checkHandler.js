@@ -1,3 +1,8 @@
+/*
+* Handle input for our 'check' command
+* Given a url, return the price of the item at that url
+* if its in the database
+*/
 const RegexHelper = require('../../util/regexHelper');
 
 const checkHandler = (args, db) => {

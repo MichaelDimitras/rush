@@ -1,3 +1,8 @@
+/*
+* Given a url, a target price and a callback,
+* scrape the page at that url and run the callback if 
+* the page shows a lower price than the target price
+*/
 const rp = require('request-promise');
 const RegexHelper = require('../util/regexHelper');
 

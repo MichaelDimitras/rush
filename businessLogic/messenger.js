@@ -1,3 +1,7 @@
+/*
+* Builds and sends messages to the webhook url for our 
+* Discord channel
+*/
 const fetch = require('node-fetch');
 const RegexHelper = require('../util/regexHelper');
 const MomentData = require('../data/momentData');
