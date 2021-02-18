@@ -3,14 +3,6 @@ class UrlLog {
         this.index = new Set();
     }
 
-    toCsv() {
-        return Array.from(this.index).toString();
-    }
-
-    saveToFile() {
-        
-    }
-
     addItem(identifier) {
         return this.index.add(identifier);
     }

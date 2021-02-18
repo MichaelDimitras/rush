@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node app.js"
+    "start": "ENV=prod node index.js",
+    "debug": "ENV=debug node index.js"
   },
   "author": "",
   "license": "ISC",
@@ -13,8 +14,9 @@
     "convert-array-to-csv": "^2.0.0",
     "csv-parse": "^4.15.1",
     "discord.js": "^12.5.1",
-    "express": "^4.17.1",
     "http-errors": "^1.8.0",
+    "lowdb": "^1.0.0",
+    "mongodb": "^3.6.4",
     "path": "^0.12.7",
     "puppeteer": "^7.0.4",
     "request": "^2.88.2",

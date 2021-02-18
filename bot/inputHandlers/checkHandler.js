@@ -1,21 +1,27 @@
-const checkHandler = (args, data) => {
+const RegexHelper = require('../../util/regexHelper');
+
+const checkHandler = (args, db) => {
     if (args.length !== 2) {
         return `ERROR: The check command should look like '!check [url]'`;
     }
+
     const url = args[1];
 
-    const match = findUrlInData(data, url);
-    if (match) {
-        return `\nTarget price: ${match[0]}\nDescrption: ${match[2]}`
+    if (!typeof url === 'string') {
+        return `ERROR: couldn't parse url ${url}.`;
+    }
+
+    if (!RegexHelper.isTopShot(url)) {
+        return `ERROR: not a Top Shot listing url. It should start with 'https://www.nbatopshot.com/listings/p2p/'`;
+    }
+
+    const moment = db.getMoment(url);
+    console.log(moment)
+    if (moment) {
+        return `\nTarget price: ${moment.targetPrice}`
     } else {
         return `\n no listing found for that url`;
     }
 }
-
-
-const findUrlInData = (data, url) => {
-    return data.find((item) => item[1] === url);
-};
-
 
 module.exports = checkHandler;
