@@ -5,7 +5,6 @@ const UrlLog = require('../dbio/urlLog');
 const RowData = require('../data/rowData');
 
 const Bot = require('../bot/bot');
-const e = require('express');
 
 const urlLog = new UrlLog();
 
@@ -28,8 +27,7 @@ const runner = (data) => {
                     console.log(`Message already sent for ${row.url}`);
                     return;
                 } else {
-                    priceChecker(row.url, row.targetPrice, console.log);
-                    // priceChecker(row.url, row.targetPrice, sendMessage);
+                    priceChecker(row.url, row.targetPrice, sendMessage);
                     urlLog.addItem(row.url);
                 }
     
@@ -50,5 +48,5 @@ const timer = (data) => {
 const execute = () => {
     parser(timer);
 }
-execute();
+
 module.exports = execute;
