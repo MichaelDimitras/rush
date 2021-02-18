@@ -1,4 +1,6 @@
 const parse = require('csv-parse');
+const path = require('path');
+const fs = require('fs');
 
 const listRouter = (req, res) => {
     const filePath = path.join(__dirname, 'shot.csv');
