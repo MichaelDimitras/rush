@@ -31,6 +31,7 @@ const listRouter = (req, res) => {
 }
 
 app.use('/list', listRouter);
+app.get('/health', res.send(200));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
