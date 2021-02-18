@@ -7,6 +7,10 @@ class UrlLog {
         return Array.from(this.index).toString();
     }
 
+    saveToFile() {
+        
+    }
+
     addItem(identifier) {
         return this.index.add(identifier);
     }

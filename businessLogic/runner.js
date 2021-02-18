@@ -1,7 +1,7 @@
 const parser = require('../dbio/parser');
 const priceChecker = require('./priceChecker');
 const sendMessage = require('./messenger');
-const UrlLog = require('../system/urlLog');
+const UrlLog = require('../dbio/urlLog');
 
 const Bot = require('../bot/bot');
 
