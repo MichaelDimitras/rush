@@ -34,7 +34,7 @@ const addHandler = (args, data) => {
             updateCsv(data);
             return `Listing updated successfully`;
         } else {
-            data.push([price, descrption, url]);
+            data.push([price, url]);
             updateCsv(data);
             return `New top shot added`;
         }
