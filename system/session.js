@@ -16,7 +16,6 @@ catch (e) {
     }
 }
 
-
 class Session{
     constructor() {
         this.environment = process.env.ENV || 'debug';

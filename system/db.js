@@ -54,7 +54,7 @@ class DB {
 
 const setDefaults = (db) => {
     if (!db.has(MOMENT_TABLE).value()) {
-        db.defaults({ moments: {} }).write();
+        db.defaults({ MOMENT_TABLE: {} }).write();
     }    
     return db;
 }
