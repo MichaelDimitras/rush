@@ -24,7 +24,8 @@ const runner = (data) => {
                 const targetPrice = data[i][0];
                 const url = data[i][2];    
                 if (urlLog.hasItem(url)) {
-                    console.log(`Message already sent for ${url}`);
+                    // console.log(`Message already sent for ${url}`);
+                    return;
                 } else {
                     priceChecker(url, targetPrice, console.log);
                     // priceChecker(url, targetPrice, sendMessage);
