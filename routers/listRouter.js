@@ -3,7 +3,7 @@ const path = require('path');
 const fs = require('fs');
 
 const listRouter = (req, res) => {
-    const filePath = path.join(__dirname, 'shot.csv');
+    const filePath = path.join(__dirname, '../shot.csv');
     const readStream = fs.createReadStream(filePath).pipe(parse({delimiter: ','}));
 
     let output = [];
