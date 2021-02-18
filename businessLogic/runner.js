@@ -1,9 +1,9 @@
-const parser = require('./parser');
+const parser = require('../dbio/parser');
 const priceChecker = require('./priceChecker');
 const sendMessage = require('./messenger');
-const UrlLog = require('./urlLog');
+const UrlLog = require('../system/urlLog');
 
-const Bot = require('./bot/bot');
+const Bot = require('../bot/bot');
 
 const urlLog = new UrlLog();
 

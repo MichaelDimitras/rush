@@ -3,7 +3,7 @@ class UrlLog {
         this.index = new Set();
     }
 
-    toCsv(){
+    toCsv() {
         return Array.from(this.index).toString();
     }
 

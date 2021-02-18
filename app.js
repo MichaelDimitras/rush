@@ -3,10 +3,11 @@ const path = require('path');
 const app = new express();
 const fs = require('fs');
 const parse = require('csv-parse');
+const newRelic = require('newrelic');
 
 const createError = require('http-errors');
 
-const runner = require('./runner');
+const runner = require('./businessLogic/runner');
 runner();
 
 app.use(express.json());
@@ -15,8 +16,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 const listRouter = (req, res) => {
-    var filePath = path.join(__dirname, 'shot.csv');
-    var readStream = fs.createReadStream(filePath).pipe(parse({delimiter: ','}));
+    const filePath = path.join(__dirname, 'shot.csv');
+    const readStream = fs.createReadStream(filePath).pipe(parse({delimiter: ','}));
 
     let output = [];
     readStream.on('data', (data) => {

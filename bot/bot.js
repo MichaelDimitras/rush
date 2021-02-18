@@ -1,7 +1,7 @@
 const Discord = require("discord.js");
 const config = require("./botconfig.json");
 
-const converter = require('./csvConverter');
+const converter = require('../dbio/csvConverter');
 
 const prefix = '!';
 const addCommand = 'add';

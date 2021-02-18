@@ -1,6 +1,9 @@
 const { convertArrayToCSV } = require('convert-array-to-csv');
-const converter = require('convert-array-to-csv');
 const fs = require('fs');
+
+const path = require('path');
+
+const kFilePath = path.join(__dirname, 'shot.csv');
 
 class Converter {
     constructor(data) {
@@ -8,7 +11,7 @@ class Converter {
         this.data = getDataRows(data);
     }
     
-    saveFile(fileName, success, failure = null) {
+    saveFile(filePath, success, failure = null) {
         const csvFromArrayOfArrays = convertArrayToCSV(this.data, {
             header: this.header,
             separator: ','
@@ -25,7 +28,7 @@ class Converter {
             }
         }
 
-        fs.writeFile(fileName, csvFromArrayOfArrays, cb);
+        fs.writeFile(filePath, csvFromArrayOfArrays, cb);
     }
 }
 
