@@ -1,5 +1,4 @@
 const rp = require('request-promise');
-const $ = require('cheerio');
 
 const MomentData = require('../data/momentData');
 const getEmoji = require('../data/emoji');
@@ -10,7 +9,7 @@ const setNameRegex = /"flowName":"([^"]+)/;
 const seriesNameRegex = /"flowSeriesNumber":(\d+)/;
 const circulationCountRegex = /"circulationCount":(\d+)/;
 
-const checkPricesForUrl = (url, targetPrice, success, failure = null) => {
+const checkPricesForUrl = (url, targetPrice, success) => {
     if (!typeof url === 'string') {
         console.log(`checkPricesForUrl expected string url, instead got ${typeof url}`);
         return;
@@ -29,19 +28,8 @@ const checkPricesForUrl = (url, targetPrice, success, failure = null) => {
                     console.error('error parsing min amount for ' + url)
                 } else {
                     if (priceNum <= targetPrice) {
-                        const playerName = getRegexMatchGroup(playerNameRegex, html);
-                        const setName = getRegexMatchGroup(setNameRegex, html);
-                        const seriesName = getRegexMatchGroup(seriesNameRegex, html);
-                        const circulationCount = getRegexMatchGroup(circulationCountRegex, html);
-                        const moment = new MomentData(url, playerName, setName, seriesName, price, circulationCount);
-
-                        const emoji = getEmoji();
-                        const msg = moment.printMessage(emoji);
+                        const msg = generateMessage(html, price, url)
                         success(msg);
-                    } else {
-                        if (failure) {
-                            failure(moment);
-                        }
                     }
                 }
             } else {
@@ -53,6 +41,19 @@ const checkPricesForUrl = (url, targetPrice, success, failure = null) => {
             throw err;
         });
 };
+
+const generateMessage = (html, price, url) => {
+    const playerName = getRegexMatchGroup(playerNameRegex, html);
+    const setName = getRegexMatchGroup(setNameRegex, html);
+    const seriesName = getRegexMatchGroup(seriesNameRegex, html);
+    const circulationCount = getRegexMatchGroup(circulationCountRegex, html);
+    const moment = new MomentData(url, playerName, setName, seriesName, price, circulationCount);
+
+    const emoji = getEmoji();
+    const msg = moment.printMessage(emoji);
+
+    return msg;
+}
 
 const getRegexMatchGroup = (regex, source) => {
     const matchResult = source.match(regex);

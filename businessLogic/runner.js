@@ -2,8 +2,10 @@ const parser = require('../dbio/parser');
 const priceChecker = require('./priceChecker');
 const sendMessage = require('./messenger');
 const UrlLog = require('../dbio/urlLog');
+const RowData = require('../data/rowData');
 
 const Bot = require('../bot/bot');
+const e = require('express');
 
 const urlLog = new UrlLog();
 
@@ -21,20 +23,19 @@ const runner = (data) => {
             } else if (data.length < 2) {
                 console.error(`Missing data for row ${i} of file`);
             } else {
-                const targetPrice = data[i][0];
-                const url = data[i][2];    
-                if (urlLog.hasItem(url)) {
-                    // console.log(`Message already sent for ${url}`);
+                const row = new RowData(data[i]);
+                if (urlLog.hasItem(row.url)) {
+                    console.log(`Message already sent for ${row.url}`);
                     return;
                 } else {
-                    priceChecker(url, targetPrice, console.log);
-                    // priceChecker(url, targetPrice, sendMessage);
-                    urlLog.addItem(url);
+                    priceChecker(row.url, row.targetPrice, console.log);
+                    // priceChecker(row.url, row.targetPrice, sendMessage);
+                    urlLog.addItem(row.url);
                 }
     
             }
         } catch(err) {
-            console.error(`Error for sending message for row ${i}`);
+            console.error(`Error for sending message for row ${i}: ${err}`);
         }
     }
 }
@@ -43,11 +44,11 @@ const timer = (data) => {
     // Make the bot once the file is parsed
     const bot = new Bot(data);
 
-    setInterval(runner, 5000, data);
+    setInterval(runner, 2000, data);
 }
 
 const execute = () => {
     parser(timer);
 }
-
+execute();
 module.exports = execute;

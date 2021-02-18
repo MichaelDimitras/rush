@@ -2,9 +2,9 @@ const fetch = require('node-fetch');
 
 const webHookUrl = process.env.webhookurl;
 
-if (!webHookUrl) {
-    throw `ERROR getting webhok url ${webHookUrl}`;
-}
+// if (!webHookUrl) {
+//     throw `ERROR getting webhok url ${webHookUrl}`;
+// }
 
 const sendMessage = (message) => {
     if(!typeof message === 'string') {
