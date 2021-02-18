@@ -26,7 +26,8 @@ const runner = (data) => {
                 if (urlLog.hasItem(url)) {
                     console.log(`Message already sent for ${url}`);
                 } else {
-                    priceChecker(url, targetPrice, sendMessage);
+                    priceChecker(url, targetPrice, console.log);
+                    // priceChecker(url, targetPrice, sendMessage);
                     urlLog.addItem(url);
                 }
     
@@ -45,7 +46,7 @@ const timer = (data) => {
 }
 
 const execute = () => {
-    parser('shot.csv', timer);
+    parser(timer);
 }
 
 module.exports = execute;

@@ -1,8 +1,8 @@
 const rp = require('request-promise');
 const $ = require('cheerio');
 
-const MomentData = require('./data/momentData');
-const getEmoji = require('./data/emoji');
+const MomentData = require('../data/momentData');
+const getEmoji = require('../data/emoji');
 
 const priceRegex = /"PriceRange","min":"(\d+)/;
 const playerNameRegex = /"playerName":"([^"]+)/;

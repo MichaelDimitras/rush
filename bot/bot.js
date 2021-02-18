@@ -70,15 +70,13 @@ const createClient = (data = []) => {
 
         for (let i = 0; i < d.length; i++) {            
             const con = new converter(d);
-            if(d[i][2] === url) {
-                //update and save the file                
+            if(d[i][2] === url) {               
                 d[i][0] = price;
-
-                con.saveFile('shot.csv', () => console.log(`File saved successfully`));
+                con.saveFile(() => console.log(`File saved successfully`));
                 return `Listing updated successfully`;
             } else {
                 d.push([price, descrption, url]);
-                con.saveFile('shot.csv', () => console.log(`File saved successfully`));
+                con.saveFile(() => console.log(`File saved successfully`));
                 return `New top shot added`;
             }
         }
