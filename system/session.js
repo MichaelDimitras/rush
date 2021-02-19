@@ -20,7 +20,7 @@ class Session{
     constructor() {
         this.environment = process.env.ENV || 'debug';
         this.db = new DB();
-        console.log('Connected to database with the following entries:', db.listMoments());
+        console.log('Connected to database with the following entries:', this.db.listMoments());
         this.urlLog = new UrlLog();
         this.webHookUrl = process.env.WEB_HOOK_URL || config.WEB_HOOK_URL;
         this.botToken = process.env.BOT_TOKEN || config.BOT_TOKEN;
