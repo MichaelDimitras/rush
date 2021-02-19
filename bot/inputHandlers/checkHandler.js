@@ -21,7 +21,6 @@ const checkHandler = (args, db) => {
     }
 
     const moment = db.getMoment(url);
-    console.log(moment)
     if (moment) {
         return `\nTarget price: ${moment.targetPrice}`
     } else {

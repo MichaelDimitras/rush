@@ -54,6 +54,7 @@ class DB {
 
 const setDefaults = (db) => {
     if (!db.has(MOMENT_TABLE).value()) {
+        console.log('No moments table found, writing default');
         db.defaults({ MOMENT_TABLE: {} }).write();
     }    
     return db;
