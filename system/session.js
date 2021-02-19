@@ -20,9 +20,12 @@ class Session{
     constructor() {
         this.environment = process.env.ENV || 'debug';
         this.db = new DB();
+        console.log('Connected to database with the following entries:', db.listMoments());
         this.urlLog = new UrlLog();
         this.webHookUrl = process.env.WEB_HOOK_URL || config.WEB_HOOK_URL;
         this.botToken = process.env.BOT_TOKEN || config.BOT_TOKEN;
+
+        console.log(`Found the following environment variables\nWebhookUrl: ${this.webHookUrl}\nbotToken: ${this.botToken}`);
 
         if (this.isProd() && !this.webHookUrl) {
             throw 'Fatal error. No webhook url found';
